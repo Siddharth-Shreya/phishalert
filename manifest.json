@@ -3,7 +3,6 @@
   "name": "Antiscam Extension",
   "description": "An extension that detects email scams.",
   "version": "1.0",
-  "permissions": ["storage", "tabs"],
   "host_permissions": ["https://*.mail.google.com/*", "https://*.outlook.live.com/*"],
   "action": {
       "default_popup": "popup.html"
@@ -14,7 +13,8 @@
               "https://mail.google.com/*",
               "https://outlook.live.com/*"
           ],
-          "js": ["scripts/content.js"]
+          "js": ["popup.js"]
       }
-  ]
+  ],
+  "permissions": ["activeTab", "scripting", "storage", "tabs"]
 }
