@@ -1,20 +1,21 @@
 {
-  "manifest_version": 3,
-  "name": "Antiscam Extension",
-  "description": "An extension that detects email scams.",
-  "version": "1.0",
-  "host_permissions": ["https://*.mail.google.com/*", "https://*.outlook.live.com/*"],
-  "action": {
+    "manifest_version": 3,
+    "name": "Antiscam Extension",
+    "description": "An extension that detects email scams.",
+    "version": "1.0",
+    "host_permissions": ["https://*.mail.google.com/*"],
+    "action": {
       "default_popup": "popup.html"
-  },
-  "content_scripts": [
-      {
-          "matches": [
-              "https://mail.google.com/*",
-              "https://outlook.live.com/*"
-          ],
-          "js": ["popup.js"]
-      }
-  ],
-  "permissions": ["activeTab", "scripting", "storage", "tabs"]
-}
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "permissions": ["identity", "activeTab", "storage"],
+    "oauth2": {
+      "client_id": "YOUR_CLIENT_ID.apps.googleusercontent.com",
+      "scopes": [
+        "https://www.googleapis.com/auth/userinfo.email",
+        "https://www.googleapis.com/auth/userinfo.profile"
+      ]
+    }
+  }  
